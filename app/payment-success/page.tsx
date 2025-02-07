@@ -1,9 +1,21 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
   const searchParams = useSearchParams();
-  const amount = searchParams.get("amount") || "0";
+  const [amount, setAmount] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Client-side fetching of amount
+    const fetchedAmount = searchParams.get("amount") || "0";
+    setAmount(fetchedAmount);
+  }, [searchParams]);
+
+  if (amount === null) {
+    return <h2 className="text-2xl text-white text-center">Loading amount...</h2>;
+  }
 
   return (
     <main className="max-w-6xl mx-auto p-10 text-white text-center border m-10 rounded-md bg-gradient-to-tr from-black to-gray-600">

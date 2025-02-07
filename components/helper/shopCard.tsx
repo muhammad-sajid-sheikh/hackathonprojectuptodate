@@ -8,7 +8,6 @@ import { useToast } from "@/hooks/use-toast"
 import { useDispatch } from "react-redux"
 import { addItem } from "@/store/cartSlice"
 import { Button } from "../ui/button";
-import { addToWishList, WishItem } from "@/store/wishSlice";
 import { FaRegHeart } from "react-icons/fa";
 
 
@@ -72,20 +71,6 @@ const ShopCard: React.FC = () => {
   }
 
 
-  const addWishListHandler = (product: Product) => {
-    const productWithQuantity: WishItem = {
-      ...product,
-      quantity: 1,  // Adding quantity to match the WishItem type
-    };
-
-    toast({
-      description: "Item added to wishlist",  // Updated toast message
-      variant: "default",
-    });
-
-    dispatch(addToWishList(productWithQuantity));  // Dispatching to the wishlist
-  };
-  
 
 
   return (
@@ -137,11 +122,7 @@ const ShopCard: React.FC = () => {
     </div>
     <div>
     <Button
-                onClick={(e) => {
-                  e.stopPropagation();  // Prevents the parent div's onClick from firing
-                  addWishListHandler(product);
-                }}
-                className="w-full h-14 text-2xl rounded-b-lg"
+                
               >
                 <FaRegHeart className=" text-red-700"/>
 

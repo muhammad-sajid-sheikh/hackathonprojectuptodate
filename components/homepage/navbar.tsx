@@ -8,7 +8,7 @@ import useInvalidPaths from "@/lib/use-invalid-path";
 import ShoppingCartButton from "../helper/shopingCartButton";
 import sanityClient from "@sanity/client";
 import Image from "next/image";
-import WishListButton from "../helper/wishListButton";
+
 
 const client = sanityClient({
     projectId: "52l1xe6v",
@@ -97,7 +97,7 @@ function NavBar() {
         <div className="flex items-center gap-4 relative">
           
           <CiSearch size={24} cursor="pointer" className="hover:text-blue-500" onClick={() => setShowSearch(!showSearch)} />
-          <Link href="/wishlist"><WishListButton /></Link>
+        
           <ShoppingCartButton />
         </div>
       </div>

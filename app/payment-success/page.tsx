@@ -1,16 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
   const searchParams = useSearchParams();
-  const [amount, setAmount] = useState("0");
-
-  useEffect(() => {
-    // Ensure this runs only on the client side
-    const amt = searchParams.get("amount");
-    if (amt) setAmount(amt);
-  }, [searchParams]);
+  const amount = searchParams.get("amount") || "0";
 
   return (
     <main className="max-w-6xl mx-auto p-10 text-white text-center border m-10 rounded-md bg-gradient-to-tr from-black to-gray-600">
